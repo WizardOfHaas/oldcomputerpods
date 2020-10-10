@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <meta name="description" content="{{ description | escape }}">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="{{ name }} - Old Computer Podcasts">
+    <meta property="twitter:description" content="{{ description | escape }}">
+    <meta property="twitter:image" content="{{ image }}">
+    <meta property="og:title" content="{{ name }} - Old Computer Podcasts">
+    <meta property="og:description" content="{{ description | escape }}">
+    <meta property="og:image" content="{{ image }}">
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-12">
+	    <div class="well podcast-banner">
+            <div class="row">
+	    		<h2 class="name">{{ name }}</h2>
+		    	<p>Hosted by {{ author }}</p>
+		    </div>
+
+		    <div class="row">
+		    	<div class="col-md-4">
+		    		<img class="podcast-logo" src="{{ image }}">
+		    	</div>
+
+		    	<div class="col-md-8">
+                    <div class="row">
+                        <p>{{ description }}</p>
+                    </div>
+
+                    <div class="row">
+                        {{ links }}
+                    </div>
+
+                    <!--<div class="row">
+                        <a class="twitter-timeline" href="https://twitter.com/adventofcomp">Tweets by adventofcomp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>-->
+
+                    <div class="row">
+                        <h3>{{ episodes.length }} Episodes</h3>
+
+                        {% for cat in categories %}
+                            <div class='tag label label-default'>{{ cat }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for color in options.colors %}
+                            <span style="background-color:rgb({{ color._rgb.join(',') }})">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        {% endfor %}
+                    </div>
+		    	</div>
+		    </div>
+        </div>
+
+        <div class="row">
+            {% for episode in episodes %}
+                {% include "templates/episode.html" ignore missing %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,236 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #b0a18e;
+}
+
+.share{
+    height: 100%;
+    width: 50px;
+    float: left;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.corner-ribbon > .share-reddit{
+    background-color: #FFFFFF;
+}
+
+.corner-ribbon > .share-reddit > a{
+    color: #FF4500;
+}
+
+.corner-ribbon > .share-linkedin{
+    background-color: #2867B2;
+}
+
+.corner-ribbon > .share-linkedin > a{
+    color: #FFFFFF;
+}
+
+.corner-ribbon > .share-twitter{
+    background-color: #1DA1F2;
+}
+
+.corner-ribbon > .share-twitter > a{
+    color: #F5F8FA;
+}
+
+.corner-ribbon > .share-fb{
+    background-color: #4267B2;
+    margin-left: 20px;
+}
+
+.corner-ribbon > .share-fb > a{
+    color: #F5F8FA;
+}
+
+.entry .description{
+    height: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+audio{
+    width: 100%;
+}
+
+.podcast-banner .podcast-logo{
+    max-width: 100%;
+}
+
+.podcast-logo{
+	max-width: 220px;
+	width: 100%;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+#header {
+	background-color: #262216;
+	color: #777;
+	border-color: #262216;
+}
+
+.navbar-nav > li > a.nav-text:hover {
+	color: #777;
+}
+
+.link-icon{
+    margin: 5px;
+}
+
+.icons{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+hr {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+
+hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f5f5f5;
+}
+
+div.entry {
+    padding: 20px;
+    height: 350px;
+}
+
+.name{
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div.description > div {
+	padding: 0px;
+	margin: 0px;
+}
+
+.error-msg{
+  color: red;
+}
+
+.tag{
+  margin: 2px;
+  display: inline-block;
+}
+
+.footer {
+  position: relative;
+  margin-top: -50px;
+  height: 50px;
+  clear: both;
+  padding-top:20px;
+  padding-right: 30px;  
+}
+
+.footer > p {
+  font-size: 10px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#values > .row {
+  padding-bottom: 10px;
+}
+
+div.value, div.units {
+  margin-left: 10px;
+}
+
+/* The ribbons */
+
+.corner-ribbon{
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.result {
+  overflow: hidden;
+}
+
+/* Custom styles */
+
+.corner-ribbon.sticky{
+  position: fixed;
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+/* Different positions */
+
+.corner-ribbon.top-left{
+  width: 250px;
+  top: 50px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right{
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left{
+  top: auto;
+  bottom: 25px;
+  left: -50px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right{
+  top: auto;
+  right: -50px;
+  bottom: 25px;
+  left: auto;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Colors */
+
+.corner-ribbon.white{background: #f0f0f0; color: #555;}
+.corner-ribbon.black{background: #333;}
+.corner-ribbon.grey{background: #999;}
+.corner-ribbon.blue{background: #2867B2;}
+.corner-ribbon.green{background: #2c7;}
+.corner-ribbon.turquoise{background: #1b9;}
+.corner-ribbon.purple{background: #95b;}
+.corner-ribbon.red{background: #e43;}
+.corner-ribbon.orange{background: #e82;}
+.corner-ribbon.yellow{background: #ec0;}

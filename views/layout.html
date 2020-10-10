@@ -1,0 +1,133 @@
+<html>
+    <head>
+    	<title>{{ title }} - Old Computer Podcasts</title>	
+
+    	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--<link rel="icon" type="image/jpg" href="" sizes="32x32">-->
+
+        {% if req %}
+        <meta property="og:url" content="{{ req.protocol + '://' + req.get('host') + req.originalUrl }}">
+        <meta property="twitter:url" content="{{ req.protocol + '://' + req.get('host') + req.originalUrl }}">
+        {% endif %}
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+    	<!-- Latest compiled and minified CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    	<!-- Latest compiled and minified JavaScript -->
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+
+        <link rel="stylesheet" href="/stylesheets/style.css">
+
+        {% if options.colors %}
+        <style>
+            body{
+                background-color: rgb({{ options.colors[1]._rgb.join(',') }});
+            }
+
+            #header, .well{
+                background-color: rgb({{ options.colors[0]._rgb.join(',') }});
+                border-color: rgb({{ options.colors[0]._rgb.join(',') }});
+                color: rgb({{ options.colors[1]._rgb.join(',') }});
+            }
+
+            div.label-default, div.badge{
+                background-color: rgb({{ options.colors[4]._rgb.join(',') }});
+            }
+
+            a > h3, body a{
+                color: rgb({{ options.colors[1]._rgb.join(',') }});
+                text-decoration: underline;
+            }
+        </style>
+        {% endif %}
+
+        {% block header %}
+	    {% endblock %}
+    </head>
+
+    <body id="#deboot">
+	    <div class="container" style="height:100%">
+	    	<nav class="navbar navbar-default" id="header">
+  	    		<div class="container-fluid">
+        			<div class="navbar-header">
+						<a class="navbar-brand" href="/"><i class="fas fa-microchip"></i></a>
+        			</div>
+
+        			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/podcasts" class="nav-text">Podcasts</a></li>
+
+                            <!--<li class="dropdown" style="padding-top: 5px;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                    <span><i class="fas fa-share-alt-square"></i><span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+
+          				<form class="navbar-form" action="/search">
+            				<div class="form-group" style="display:inline;">
+              					<div class="input-group" style="display:table;">
+                					<input class="form-control" name="q" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text" value="{{ query }}">
+                					<span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+              					</div>
+            				</div>
+          				</form>
+        			</div><!-- /.navbar-collapse -->
+  	    		</div><!-- /.container-fluid -->
+	    	</nav>
+
+	    	<div class="row">
+	    		{% block content %}
+	    		{% endblock %}
+	    	</div>
+	    </div>
+    
+        <footer class="footer text-muted text-right">
+            <p><a href="https://github.com/WizardOfHaas/">(OldComputerPods)</a> b1</p>
+            <p>&copy;Sean Haas, 2020</p>
+        </footer>
+
+        <div class="corner-ribbon top-left sticky blue shadow">
+            <div class="share share-fb">
+                <a href="https://www.facebook.com/sharer.php" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-facebook-f fa-2x"></i></a>
+            </div>
+
+            <div class="share share-twitter">
+                <a href="https://twitter.com/intent/tweet" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+
+            <div class="share share-reddit">
+                <a href="https://www.reddit.com/submit?" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-reddit fa-2x"></i></a>
+            </div>
+
+            <div class="share share-linkedin">
+                <a href="https://www.linkedin.com/shareArticle" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-linkedin fa-2x"></i></a>
+            </div>
+        </div>
+
+        <script>
+            $(".share-twitter > a").attr("href", "https://twitter.com/intent/tweet?url=" +  window.location + "&text=" + document.title);
+            $(".share-linkedin > a").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=" +  window.location + "&title=" + document.title);
+            $(".share-reddit > a").attr("href", "https://www.reddit.com/submit?mini=true&url=" +  window.location + "&title=" + document.title);
+        </script>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-84802558-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

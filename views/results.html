@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+					{{ message }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+            {% for episode in episodes %}
+                {% include "templates/episode.html" ignore missing %}
+            {% endfor %}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<div class="col-md-6">
+	<div class="well result entry">
+		<div class="row">
+			<a href="/episode/{{ episode.guid | urlencode }}" title="{{ episode.title }}">
+                <h3 class="name">{{ episode.title }}</h3>
+            </a>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="/podcast/{{ episode.podcast.name }}">{{ episode.podcast.name }}</a> {{ episode.pubDate.toLocaleDateString("en-US") }}
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<a href="/episode/{{ episode.guid | urlencode }}">
+					<img class="podcast-logo" src="{{ episode.image  }}">
+                </a>
+			</div>
+
+			<div class="col-md-6 description">
+				<p>{{ episode.description }}</p>
+			</div>
+	
+			<hr>
+        </div>
+
+        <div class="row">
+            {% for tag in episode.tags %}
+                <a href='/tags/{{ tag }}'><div class='tag label label-default'>{{ tag }}</div></a>
+            {% endfor %}
+        </div>
+	</div>
+</div>

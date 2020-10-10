@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <meta name="description" content="{{ description | escape }}">
+    <meta property="twitter:card" content="player">
+    <meta property="twitter:title" content="{{ fullTitle }} - {{ podcast.name }} - Old Computer Podcasts">
+    <meta property="twitter:description" content="{{ description | escape }}">
+    <meta property="twitter:image" content="{{ image }}">
+
+	<meta name="twitter:player" content="{{ 'https://' + req.get('host') + '/player/' }}{{guid | urlencode}}">
+	<meta name="twitter:player:width" content="640">
+	<meta name="twitter:player:height" content="640">
+	<meta name="twitter:player:stream" content="{{ media }}">
+    <meta name="twitter:player:stream:content_type" content="audio/mpeg">
+
+    <meta property="og:title" content="{{ fullTitle }} - {{ podcast.name }} - Old Computer Podcasts">
+    <meta property="og:description" content="{{ description | escape }}">
+    <meta property="og:image" content="{{ image }}">
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-12">
+	    <div class="well podcast-banner">
+            <div class="row">
+                <h2 class="name">{{ fullTitle }}</h2>
+
+		    	&nbsp;&nbsp;&nbsp;&nbsp;<a href="/podcast/{{ podcast.name }}">{{ podcast.name }}</a> {{ pubDate.toLocaleDateString("en-US") }}
+		    </div>
+
+		    <div class="row">
+		    	<div class="col-md-4">
+		    		<img class="podcast-logo" src="{{ image }}">
+		    	</div>
+
+		    	<div class="col-md-8">
+                    <div class="row">
+                        <audio controls>
+                            <source src="{{ media }}">
+                        </audio>
+                    </div>
+
+                    <div class="row icons">
+                        {{ links }}
+                    </div>
+
+                    <div class="row">
+                        <p>{{ pubDate.toLocaleDateString("en-US") }}</p>
+                        <p>{{ description }}</p>
+                    </div>
+
+                    <div class="row">
+                        {% for color in options.colors %}
+                            <span style="background-color:rgb({{ color._rgb.join(',') }})">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        {% endfor %}
+                    </div>
+		    	</div>
+		    </div>
+        </div>
+    </div>
+{% endblock %}

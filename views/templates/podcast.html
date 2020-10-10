@@ -1,0 +1,30 @@
+<div class="col-md-6">
+	<div class="well result entry">
+		<div class="row">
+			<a href="/podcast/{{ podcast.name | urlencode}}">
+				<h3 class="name">{{ podcast.name }}</h3>
+			</a>
+			<p>{{ podcast.author }}</p>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<a href="/podcast/{{ podcast.name | urlencode}}">
+					<img class="podcast-logo" src="{{ podcast.image  }}">
+				</a>
+			</div>
+
+			<div class="col-md-6">
+                <div class="row">
+                    <p>{{ podcast.description }}</p>
+                </div>
+
+                <div class="row">
+                    {% for cat in podcast.categories %}
+                        <div class='tag label label-default'>{{ cat }}</div>
+                    {% endfor %}
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

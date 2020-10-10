@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		{% if message %}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+					<h2>Welcome to Old Computer Podcasts</h2>
+					<p>The only online repository for audio about antiquated technology.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+            {% for episode in episodes %}
+                {% include "templates/episode.html" ignore missing %}
+            {% endfor %}
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tags well">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$.get('/tags', function(d){
+			d.forEach(function(tag){
+				$(".tags").append(
+					"<a href='/tags/" + tag.tag + "'><div class='tag label label-default'>" +
+						tag.tag + ":" + tag.count +
+					"</div></a>"
+				);
+			});
+		});
+	</script>
+{% endblock %}
