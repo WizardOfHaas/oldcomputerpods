@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Parser = require('rss-parser');
 var axios = require('axios');
 const getColors = require('get-image-colors');
+var waterfall = require('async-waterfall');
 
 var Episode = require('./episode');
 
@@ -96,9 +97,61 @@ podcastSchema.methods.parse = function(cb){
 			});
 
             //https://itunes.apple.com/search?term=Advent+Of+Computing&entity=podcast
+            //https://plinkhq.com/i/appleID?to=googlepod
+            //https://plinkhq.com/i/appleID?to=spotify
+            //https://plinkhq.com/i/appleID?to=applepod
+
+            waterfall([
+                function(next){ //Get Apple collection ID and URL
+                    axios.get("https://itunes.apple.com/search?term=" + self.name.replace(/\s+/g, "+") + "&entity=podcast").then(function(resp){
+                        self.options.appleId = resp.data.results[0].collectionId;
+                        self.options.appleUrl= resp.data.results[0].collectionViewUrl;
+
+                        next();
+                    });
+                },
+                function(next){ //Get Google Podcasts URL
+                    axios.get("https://plinkhq.com/i/" + self.options.appleId + "?to=googlepod").then(function(resp){
+                        console.log(resp.request.res.responseUrl);
+                        self.options.googleUrl = resp.request.res.responseUrl;
+
+                        next();
+                    });
+                },
+                function(next){ //Get Spotify URL
+                    axios.get("https://plinkhq.com/i/" + self.options.appleId + "?to=spotify").then(function(resp){
+                        console.log(resp.request.res.responseUrl);
+                        self.options.spotifyUrl = resp.request.res.responseUrl;
+
+                        next();
+                    });
+                },
+                function(next){ //Sample image colors
+                    getImageColors(self.image, function(colors){
+                        self.options.colors = colors;
+
+                        next();
+                    });
+                }
+            ], function(err, res){
+                self.markModified('options');
+
+                self.save().then(function(){
+                    if(cb){
+                        cb(feed);
+                    }
+                });
+            });
+
+            /*
+            //https://itunes.apple.com/search?term=Advent+Of+Computing&entity=podcast
             axios.get("https://itunes.apple.com/search?term=" + self.name.replace(/\s+/g, "+") + "&entity=podcast").then(function(resp){
                 self.options.appleId = resp.data.results[0].collectionId;
                 self.options.appleUrl= resp.data.results[0].collectionViewUrl;
+
+                //https://plinkhq.com/i/appleID?to=googlepod
+                //https://plinkhq.com/i/appleID?to=spotify
+                //https://plinkhq.com/i/appleID?to=applepod
 
                 getImageColors(self.image, function(colors){
                     self.options.colors = colors;
@@ -112,6 +165,7 @@ podcastSchema.methods.parse = function(cb){
                     });
                 });
             });
+            */
 		}
 	})
 }

@@ -179,6 +179,12 @@ var linkFormats = [{
 },{
     key: "appleUrl",
     icon: "fas fa-podcast"
+},{
+    key: "googleUrl",
+    icon: "fab fa-google"
+},{
+    key: "spotifyUrl",
+    icon: "fab fa-spotify"
 }];
 
 function makeLinkBar(item){
