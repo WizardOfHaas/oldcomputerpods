@@ -1,3 +1,53 @@
+@media (max-width: 950px){
+    div.entry{
+        max-height: 700px!important;
+        height: unset!important;
+    }
+
+    div.description{
+        max-height: 200px;
+        height: unset!important;
+    }
+
+    .entry-header{
+        text-align: center;
+    }
+
+    .podcast-logo{
+        max-width: unset!important;
+    }
+
+    .share-ribbon.corner-ribbon.top-left{
+        transform: none;
+        background-color: rgba(0 ,0, 0, 0);
+        border-color: rgba(0 ,0, 0, 0);
+
+        width: 100%;
+        height: 70px;
+        top: 95%;
+        left: auto;
+        right: auto;
+    }
+
+    .share-ribbon.corner-ribbon > .share-fb{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 749px){
+    .navbar-toggler{
+        display: initial;
+        float: right;
+        margin: 20px;
+    }
+}
+
+@media (min-width: 750px){
+    .navbar-toggler{
+        display: none;
+    }
+}
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;

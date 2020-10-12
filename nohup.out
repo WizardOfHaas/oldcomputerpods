@@ -4621,3 +4621,29 @@ Database connection successful
 2020-10-09T17:33:51.942-0700 I NETWORK  [conn1411] received client metadata from 127.0.0.1:35294 conn1411: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
 2020-10-10T10:42:15.502-0700 I NETWORK  [conn1411] end connection 127.0.0.1:35294 (2 connections now open)
 2020-10-10T10:42:16.615-0700 I NETWORK  [conn1410] end connection 127.0.0.1:35292 (1 connection now open)
+2020-10-10T15:33:40.419-0700 I NETWORK  [conn1409] end connection 127.0.0.1:35290 (0 connections now open)
+2020-10-10T15:47:53.947-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51542 #1412 (1 connection now open)
+2020-10-10T15:47:53.947-0700 I NETWORK  [conn1412] received client metadata from 127.0.0.1:51542 conn1412: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-8-g05b19c6" }, os: { type: "Linux", name: "PRETTY_NAME="Debian GNU/Linux 9 (stretch)"", architecture: "x86_64", version: "Kernel 4.9.0-8-amd64" } }
+2020-10-10T15:47:54.186-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51552 #1413 (2 connections now open)
+2020-10-10T15:47:54.187-0700 I NETWORK  [conn1413] received client metadata from 127.0.0.1:51552 conn1413: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-8-g05b19c6" }, os: { type: "Linux", name: "PRETTY_NAME="Debian GNU/Linux 9 (stretch)"", architecture: "x86_64", version: "Kernel 4.9.0-8-amd64" } }
+2020-10-10T15:47:59.328-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51604 #1414 (3 connections now open)
+2020-10-10T15:47:59.328-0700 I NETWORK  [conn1414] received client metadata from 127.0.0.1:51604 conn1414: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-8-g05b19c6" }, os: { type: "Linux", name: "PRETTY_NAME="Debian GNU/Linux 9 (stretch)"", architecture: "x86_64", version: "Kernel 4.9.0-8-amd64" } }
+2020-10-10T15:47:59.372-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51606 #1415 (4 connections now open)
+2020-10-10T15:47:59.372-0700 I NETWORK  [conn1415] received client metadata from 127.0.0.1:51606 conn1415: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-8-g05b19c6" }, os: { type: "Linux", name: "PRETTY_NAME="Debian GNU/Linux 9 (stretch)"", architecture: "x86_64", version: "Kernel 4.9.0-8-amd64" } }
+2020-10-10T15:48:54.453-0700 I NETWORK  [conn1414] end connection 127.0.0.1:51604 (3 connections now open)
+2020-10-10T15:48:54.472-0700 I NETWORK  [conn1415] end connection 127.0.0.1:51606 (2 connections now open)
+2020-10-10T15:48:54.648-0700 I NETWORK  [conn1413] end connection 127.0.0.1:51552 (1 connection now open)
+2020-10-10T15:48:54.648-0700 I NETWORK  [conn1412] end connection 127.0.0.1:51542 (0 connections now open)
+2020-10-10T15:54:27.990-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:55536 #1416 (1 connection now open)
+2020-10-10T15:54:27.996-0700 I NETWORK  [conn1416] received client metadata from 127.0.0.1:55536 conn1416: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-10T15:54:28.009-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:55538 #1417 (2 connections now open)
+2020-10-10T15:54:28.010-0700 I NETWORK  [conn1417] received client metadata from 127.0.0.1:55538 conn1417: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-10T15:54:28.010-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:55540 #1418 (3 connections now open)
+2020-10-10T15:54:28.010-0700 I NETWORK  [conn1418] received client metadata from 127.0.0.1:55540 conn1418: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-11T15:22:25.141-0700 I COMMAND  [LogicalSessionCacheRefresh] command config.$cmd command: update { update: "system.sessions", ordered: false, allowImplicitCollectionCreation: false, writeConcern: { w: "majority", wtimeout: 15000 }, $db: "config" } numYields:0 reslen:245 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { w: 1 } }, Collection: { acquireCount: { w: 1 } } } storage:{} protocol:op_msg 2990ms
+2020-10-11T15:27:55.235-0700 I NETWORK  [conn1418] end connection 127.0.0.1:55540 (2 connections now open)
+2020-10-11T15:27:55.236-0700 I NETWORK  [conn1417] end connection 127.0.0.1:55538 (1 connection now open)
+2020-10-11T17:43:58.711-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:37922 #1419 (2 connections now open)
+2020-10-11T17:43:58.715-0700 I NETWORK  [conn1419] received client metadata from 127.0.0.1:37922 conn1419: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-12T08:02:17.886-0700 I NETWORK  [conn1419] end connection 127.0.0.1:37922 (1 connection now open)
+2020-10-12T08:17:57.937-0700 I NETWORK  [conn1416] end connection 127.0.0.1:55536 (0 connections now open)
