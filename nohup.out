@@ -4761,3 +4761,12 @@ Database connection successful
 2020-10-12T08:47:06.875-0700 I NETWORK  [conn1456] end connection 127.0.0.1:45038 (2 connections now open)
 2020-10-12T08:47:07.950-0700 I NETWORK  [conn1457] end connection 127.0.0.1:45040 (1 connection now open)
 2020-10-12T09:26:04.861-0700 I NETWORK  [conn1455] end connection 127.0.0.1:45036 (0 connections now open)
+2020-10-13T08:53:41.147-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51846 #1458 (1 connection now open)
+2020-10-13T08:53:41.158-0700 I NETWORK  [conn1458] received client metadata from 127.0.0.1:51846 conn1458: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-13T08:53:41.180-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51848 #1459 (2 connections now open)
+2020-10-13T08:53:41.180-0700 I NETWORK  [listener] connection accepted from 127.0.0.1:51850 #1460 (3 connections now open)
+2020-10-13T08:53:41.181-0700 I NETWORK  [conn1459] received client metadata from 127.0.0.1:51848 conn1459: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-13T08:53:41.181-0700 I NETWORK  [conn1460] received client metadata from 127.0.0.1:51850 conn1460: { driver: { name: "nodejs|Mongoose", version: "3.6.2" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-8-amd64" }, platform: "'Node.js v12.13.1, LE (unified)", version: "3.6.2|5.10.8" }
+2020-10-13T09:12:19.534-0700 I NETWORK  [conn1459] end connection 127.0.0.1:51848 (1 connection now open)
+2020-10-13T09:12:19.534-0700 I NETWORK  [conn1460] end connection 127.0.0.1:51850 (2 connections now open)
+2020-10-13T09:12:19.534-0700 I NETWORK  [conn1458] end connection 127.0.0.1:51846 (0 connections now open)
