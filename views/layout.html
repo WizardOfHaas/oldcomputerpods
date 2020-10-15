@@ -23,7 +23,7 @@
 
         <link rel="stylesheet" href="/stylesheets/style.css">
 
-        {% if options.colors %}
+        {% if options.colors and options.colors.length > 4 %}
         <style>
             body{
                 background-color: rgb({{ options.colors[1]._rgb.join(',') }});
@@ -115,11 +115,33 @@
 	    	<div class="row">
 	    		{% block content %}
 	    		{% endblock %}
-	    	</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="/about">About</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a href="/">Latest Episodes</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a href="/podcasts">All Podcasts</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tags"></div>
+                            </div>
+                        </div>
+	    			</div>
+    			</div>
+            </div>
 	    </div>
-    
+
         <footer class="footer text-muted text-right">
-            <p><a href="https://github.com/WizardOfHaas/">(OldComputerPods)</a> b1</p>
+            <p><a href="https://github.com/WizardOfHaas/oldcomputerpods">(OldComputerPods)</a> b1</p>
             <p>&copy;Sean Haas, 2020</p>
         </footer>
 
@@ -156,5 +178,17 @@
             ga('create', 'UA-84802558-1', 'auto');
             ga('send', 'pageview');
         </script>
+
+        <script>
+		    $.get('/tags', function(d){
+	    		d.forEach(function(tag){
+    				$(".tags").append(
+					    "<a href='/tags/" + tag.tag + "'><div class='tag label label-default'>" +
+				    		tag.tag + ":" + tag.count +
+			    		"</div></a>"
+		    		);
+	    		});
+    		});
+	    </script>
     </body>
 </html>

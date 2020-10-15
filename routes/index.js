@@ -31,6 +31,18 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+router.get("/about", function(req, res, next){
+    Podcast.count({}, function(err, p){
+        Episode.count({}, function(err, e){
+            res.render("about.html", {
+                title: "About",
+                total_podcasts: p,
+                total_episodes: e
+            });
+        });
+    });
+})
+
 router.get('/podcasts', function(req, res, next) {
 	var res_data = {
 		title: "All Podcasts",

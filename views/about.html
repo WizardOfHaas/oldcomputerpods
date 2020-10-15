@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+                    <h2>Welcome to Old Computer Podcasts</h2>
+                    
+                    <h3>Now with <b>{{ total_podcasts }}</b> podcasts and a total of <b>{{ total_episodes }}</b> episodes!</h3>
+
+                    <p>The goal of this project is to create a one-stop shop for podcasts about computer history and retro computing. All code for the site is written and maintained by Sean Haas, host of <a href="https://adventofcomputing.com/">Advent of Computing</a>.  If you know of a show I'm missing please hit me up. You can tweet me <a href="https://twitter.com/adventofcomp">@adventofcomp</a> or email me at <a href="mailto:adventofcomputing@gmail.com">here</a></p>
+                    
+                    <p>As this is a somewhat janky automatic directory there are a few things to keep in mind:</p>
+
+                    <ul>
+                        <li>I am doing this in my spare time, so bug reports will be fixed at my leasure. You can report problems on <a href="https://github.com/WizardOfHaas/oldcomputerpods/issues">github</a>.</li>
+                        <li>I'm not modifying, downloading, or re-hosting anyone's content. All this site does is scrape RSS feeds and add some extra data. Images, any audio, and links are grabbed verbatum from feeds.</li>
+                        <li>Everyhting is automated by some smart software, but things still go wrong. If tags, links, or images are missing then there was probably some issue while scraping data. Some APIs I'm polling don't always play nice.</li>
+                        <li>There is no fancy algorythim, stuff is sorted either alphabeticaly or by pub date. If you want your podcast to show up first then name it something like "#######" and publish every day.</li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
