@@ -80,7 +80,7 @@ podcastSchema.methods.parse = function(cb){
 
                         ep.options.website = item.link;
 
-                        if(episode && episode.options && episode.options.trackId){
+                        if(ep && ep.options && ep.options.trackId){
                             updateEp(ep);
                         }else{
 					        axios.get("https://itunes.apple.com/search?term=" + ep.title.replace(/[\s\,\-\&]+/g, "+") + "&entity=podcastEpisode").then(function(resp){
