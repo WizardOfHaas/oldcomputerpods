@@ -108,6 +108,7 @@ router.get('/episode/:guid', function(req, res, next){
             data.links = makeLinkBar(data);
             data.options.colors = data.podcast.options.colors;
             data.req = req;
+			data.page_title = data.title + " - " + data.podcast.name;
 
 			res.render('episode.html', data);
 		}else{
@@ -168,7 +169,7 @@ router.get('/tags', function(req, res, next){
         },{
             $sort: {count: -1}
         },{
-            $limit: 20
+            $limit: 50
         }
     ]).then(function(d){
         res.send(d);
