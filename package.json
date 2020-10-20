@@ -27,6 +27,7 @@
     "rss-to-js": "^1.0.1",
     "rss-url-parser": "^2.1.1",
     "serve-favicon": "~2.3.0",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "wavesurfer.js": "^4.2.0"
   }
 }

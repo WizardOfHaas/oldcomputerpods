@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 
+{% block header %}
+    <meta name="description" content="The only online repository for audio about antiquated technology. Here you can find all the best podcasts covering the history of computers, their evolution, and where old technology lives in the modern day.">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Old Computer Podcasts">
+    <meta property="twitter:description" content="The only online repository for audio about antiquated technology. Here you can find all the best podcasts covering the history of computers, their evolution, and where old technology lives in the modern day.">
+    <meta property="twitter:image" content="http://0e4901d1c9db.ngrok.io/images/big_disk.png">
+    <meta property="og:title" content="Old Computer Podcasts">
+    <meta property="og:description" content="The only online repository for audio about antiquated technology. Here you can find all the best podcasts covering the history of computers, their evolution, and where old technology lives in the modern day.">
+    <meta property="og:image" content="http://0e4901d1c9db.ngrok.io/images/big_disk.png">
+{% endblock %}
+
 {% block content %}
 	<div class="col-md-12">
 		{% if message %}
