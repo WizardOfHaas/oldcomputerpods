@@ -2,45 +2,25 @@
     <head>
         <style>
             audio{
-                margin-top: -10px;
-                width: 100%;
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                width: 45%;
             }
 
             img{
-                width: 90%;
+                width: 100%;
             }
 
             body{
-                height: 640px;
-                text-align: center;
+                margin: 0px;
+                padding: 0px;
             }
         </style>
-
-        {% if options.colors %}
-        <style>
-            body{
-                background-color: rgb({{ options.colors[1]._rgb.join(',') }});
-            }
-        
-            #header, .well{
-                background-color: rgb({{ options.colors[0]._rgb.join(',') }});
-                border-color: rgb({{ options.colors[0]._rgb.join(',') }});
-                color: rgb({{ options.colors[4]._rgb.join(',') }})!important;
-            }
-        
-            div.label-default, div.badge{
-                background-color: rgb({{ options.colors[4]._rgb.join(',') }});
-            }
-        
-            a > h3{
-                color: rgb({{ options.colors[4]._rgb.join(',') }})!important;
-            }
-        </style>
-        {% endif %}
     </head>
 
     <body>
-        <img src="{{ image }}">
+        <img src="/episode/image/{{ guid | urlencode}}">
 
         <audio controls>
             <source src="{{ media }}">

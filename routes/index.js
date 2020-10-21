@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
+var { createCanvas, loadImage } = require('canvas');
 
 var Podcast = require('../models/podcast');
 var Episode = require('../models/episode');
@@ -119,6 +120,91 @@ router.get('/episode/:guid', function(req, res, next){
 		}
     });
 });
+
+router.get('/episode/image/:guid', function(req, res, next){
+    Episode.findOne({guid: req.params.guid}).populate("podcast").exec(function(err, data){
+        if(!err){
+            var width = 1200;
+            var height = 600;
+
+            var canvas = createCanvas(width, height);
+            var context = canvas.getContext('2d');
+
+            context.fillStyle = '#fff';
+
+            if(data.podcast.options.colors && data.podcast.options.colors.length > 3){
+                context.fillStyle = "rgba(" + data.podcast.options.colors[0]._rgb.join(',') + ")";
+            }
+
+            context.fillRect(0, 0, width, height);
+
+            loadImage(data.image).then(function(image){
+                var pad = 10;
+                context.drawImage(image, pad, pad, height - 2 * pad, height - 2 * pad);
+
+                context.font = 'bold 40pt Menlo';
+                context.textAlign = 'left';
+                context.fillStyle = '#000';
+    
+                if(data.podcast.options.colors && data.podcast.options.colors.length > 3){
+                    context.fillStyle = "rgba(" + data.podcast.options.colors[1]._rgb.join(',') + ")";
+                }
+    
+                context.fillText(
+                    getLines(context, data.fullTitle, width / 2 - pad, context.font).join("\n"),
+                    width / 2, 170, width / 2 - pad
+                );
+
+                context.font = 'bold 20pt Menlo';
+
+                if(data.podcast.options.colors && data.podcast.options.colors.length > 3){
+                    context.fillStyle = "rgba(" + data.podcast.options.colors[2]._rgb.join(',') + ")";
+                }
+
+                context.fillText(data.podcast.name, width / 2, 110, width / 2 - pad);
+
+                //res.send(canvas.toBuffer('image/png'));
+                res.setHeader('Content-Type', 'image/png');
+                canvas.pngStream().pipe(res);
+            });
+		}else{
+			res.render('error.html', {
+				title: "DB Error",
+				error: err
+			});
+		}
+    });
+});
+
+function getLines(ctx,phrase,maxPxLength,textStyle){
+    var wa=phrase.split(" "),
+        phraseArray=[],
+        lastPhrase=wa[0],
+        measure=0,
+        splitChar=" ";
+    if (wa.length <= 1) {
+        return wa
+    }
+
+    ctx.font = textStyle;
+
+    for (var i=1;i<wa.length;i++) {
+        var w=wa[i];
+        measure=ctx.measureText(lastPhrase+splitChar+w).width;
+        if (measure<maxPxLength) {
+            lastPhrase+=(splitChar+w);
+        } else {
+            phraseArray.push(lastPhrase);
+            lastPhrase=w;
+        }
+        if (i===wa.length-1) {
+            phraseArray.push(lastPhrase);
+            break;
+        }
+    }
+
+    return phraseArray;
+}
 
 router.get('/player/:guid', function(req, res, next){
     console.log(decodeURIComponent(req.params.guid));
