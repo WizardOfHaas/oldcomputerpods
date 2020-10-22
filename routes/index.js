@@ -142,7 +142,7 @@ router.get('/episode/image/:guid', function(req, res, next){
                 var pad = 10;
                 context.drawImage(image, pad, pad, height - 2 * pad, height - 2 * pad);
 
-                context.font = 'bold 40pt Menlo';
+                context.font = 'bold 40pt Sans';
                 context.textAlign = 'left';
                 context.fillStyle = '#000';
     
@@ -155,7 +155,7 @@ router.get('/episode/image/:guid', function(req, res, next){
                     width / 2, 170, width / 2 - pad
                 );
 
-                context.font = 'bold 20pt Menlo';
+                context.font = 'bold 20pt Sans';
 
                 if(data.podcast.options.colors && data.podcast.options.colors.length > 3){
                     context.fillStyle = "rgba(" + data.podcast.options.colors[2]._rgb.join(',') + ")";

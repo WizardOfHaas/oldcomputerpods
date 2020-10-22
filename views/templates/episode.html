@@ -5,7 +5,7 @@
                 <h3 class="name">{{ episode.title }}</h3>
             </a>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="/podcast/{{ episode.podcast.name }}">{{ episode.podcast.name }}</a> {{ episode.pubDate.toLocaleDateString("en-US") }}
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="/podcast/{{ episode.podcast.name | urlencode }}">{{ episode.podcast.name }}</a> {{ episode.pubDate.toLocaleDateString("en-US") }}
 		</div>
 
 		<div class="row">
