@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var { createCanvas, loadImage } = require('canvas');
+var useragent = require('express-useragent');
 
 var Podcast = require('../models/podcast');
 var Episode = require('../models/episode');
@@ -207,21 +208,26 @@ function getLines(ctx,phrase,maxPxLength,textStyle){
 }
 
 router.get('/player/:guid', function(req, res, next){
-    console.log(decodeURIComponent(req.params.guid));
+    var source = req.headers['user-agent']
+    var ua = useragent.parse(source);
 
-    Episode.findOne({guid: decodeURIComponent(req.params.guid)}).populate("podcast").exec(function(err, data){
-        if(!err && data){
-            data.links = makeLinkBar(data);
-            data.options.colors = data.podcast.options.colors;
+    if(ua.isMobile){
+        res.redirect("/episode/" + req.params.guid);
+    }else{
+        Episode.findOne({guid: decodeURIComponent(req.params.guid)}).populate("podcast").exec(function(err, data){
+            if(!err && data){
+                data.links = makeLinkBar(data);
+                data.options.colors = data.podcast.options.colors;
 
-			res.render('player.html', data);
-		}else{
-			res.render('error.html', {
-				title: "DB Error",
-				error: err
-			});
-		}
-    });
+		    	res.render('player.html', data);
+		    }else{
+			    res.render('error.html', {
+    				title: "DB Error",
+				    error: err
+    			});
+	    	}
+        });
+    }
 });
 
 router.get('/search', function(req, res, next){
