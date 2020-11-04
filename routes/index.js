@@ -241,9 +241,19 @@ router.get('/playlist', function(req, res, next){
             if(err){
                 res.send(err);
             }else{
+                var playlist = data.map(function(e){
+                    return {
+                        "name": e.title,
+                        "artist": e.podcast.name,
+                        "url": e.media,
+                        "cover_art_url": e.image
+                    };
+                });
+
                 res.render('playlist.html', {
                     title: 'Fancy Playlist',
                     episodes: data,
+                    playlist: playlist,
                     query: ""
                 })
             }
