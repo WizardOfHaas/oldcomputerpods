@@ -74,15 +74,15 @@ podcastSchema.methods.parse = function(cb){
 					    	image: item.itunes && item.itunes.image ? item.itunes.image : self.image,
 					    	episodeNumber: item.itunes && item.itunes.episode ? item.itunes.episode : null,
                             duration: item.itunes ? item.itunes.duration : "",
-                            tags: tags,
-					    	options: episode && episode.options ? episode.options : {}
+                            tags: tags
                         };
-
-                        ep.options.website = item.link;
 
                         if(ep && ep.options && ep.options.trackId){
                             updateEp(ep);
                         }else{
+                            ep.options = episode && episode.options ? episode.options : {};
+                            ep.options.website = item.link;
+
 					        axios.get("https://itunes.apple.com/search?term=" + ep.title.replace(/[\s\,\-\&]+/g, "+") + "&entity=podcastEpisode").then(function(resp){
 					    	    if(resp.data.results.length > 0 && resp.data.results[0].trackName == ep.title && resp.data.results[0].collectionName == self.name){
                                     ep.options.appleUrl = resp.data.results[0].collectionViewUrl;

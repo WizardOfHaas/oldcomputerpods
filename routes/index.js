@@ -3,6 +3,7 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var { createCanvas, loadImage } = require('canvas');
 var useragent = require('express-useragent');
+var mongoose = require('mongoose');
 
 var Podcast = require('../models/podcast');
 var Episode = require('../models/episode');
@@ -227,6 +228,28 @@ router.get('/player/:guid', function(req, res, next){
     			});
 	    	}
         });
+    }
+});
+
+router.get('/playlist', function(req, res, next){
+    if(req.query.eps){
+        var ids = req.query.eps.split(",").map(function(id){
+            return mongoose.Types.ObjectId(id);
+        });
+
+        Episode.find({_id: {"$in": ids}}).populate("podcast").exec(function(err, data){
+            if(err){
+                res.send(err);
+            }else{
+                res.render('playlist.html', {
+                    title: 'Fancy Playlist',
+                    episodes: data,
+                    query: ""
+                })
+            }
+        });
+    }else{
+        res.send({});
     }
 });
 

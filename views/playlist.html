@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+                    {{ message }}
+                    
+                    <div id="player-holder">
+                        <div id="player"></div>
+                    </div>
+
+                    <h2>Episodes in this Playlist</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+            {% for episode in episodes %}
+                {% include "templates/episode.html" ignore missing %}
+            {% endfor %}
+		</div>
+    </div>
+    
+    <script>
+        /*var myPlaylist = new jPlayerPlaylist(
+            {
+                jPlayer: "#player",
+                cssSelectorAncestor: "#player-holder"
+            },[],{
+                swfPath: "https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.swf",
+                supplied: "ogv, m4v, oga, mp3",
+                smoothPlayBar: false,
+                keyEnabled: true
+            }
+        );
+
+        {% for episode in episodes %}
+            myPlaylist.add({
+                title: "{{ episode.title }}",
+                artist: "{{ episode.podcast.name }}",
+                mp3: "{{ episode.media }}",
+                poster: "{{ episode.image }}"
+            });
+        {% endfor %}*/
+
+
+        
+    </script>
+{% endblock %}
