@@ -4,6 +4,10 @@
 	<div class="col-md-12">
         <div class="well">
             <h3>{{ title }}</h3>
+
+            {% if ids %}
+                <a href="/playlist?eps={{ids}}">Make this into a playlist --></a>
+            {% endif %}
         </div>
 
 		<div class="row">

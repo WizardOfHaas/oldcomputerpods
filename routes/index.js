@@ -273,7 +273,10 @@ router.get('/search', function(req, res, next){
 			res.render('search.html', {
 				title: "Search Results for '" + req.query.q + "'",
 				query: req.query.q,
-				results: data
+                results: data,
+                ids: data.map(function(e){
+                    return e._id;
+                }).join(",")
 			});
 		}else{
 			res.send(err);
@@ -306,7 +309,10 @@ router.get('/tags/:tag', function(req, res, next){
         res.render("search.html", {
             title: "'" + req.params.tag + "' Episodes",
             message: "Podcast episodes tagged with '" + req.params.tag + "'",
-            results: d
+            results: d,
+            ids: d.map(function(e){
+                return e._id;
+            }).join(",")
         });
     })
 });

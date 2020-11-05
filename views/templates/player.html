@@ -66,7 +66,7 @@
         <!-- Right Side Player -->
         <div id="amplitude-right">
             {% for episode in episodes %}
-            <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0">
+            <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index - 1 }}">
                 <div class="song-now-playing-icon-container">
                     <div class="play-button-container">
 
