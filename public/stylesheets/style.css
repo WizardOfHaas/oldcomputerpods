@@ -250,6 +250,7 @@ div.value, div.units {
 /* Different positions */
 
 .corner-ribbon.top-left{
+  z-index: 100px;
   width: 250px;
   top: 50px;
   left: -50px;
